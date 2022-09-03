@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, View, ScrollView, StyleSheet, Switch, Button} from "react-native";
+import { Text, View, ScrollView, StyleSheet, Switch, Button, Modal} from "react-native";
 import { Picker } from '@react-native-picker/picker';
 import  DateTimePicker  from '@react-native-community/datetimepicker';
 
@@ -8,6 +8,7 @@ import  DateTimePicker  from '@react-native-community/datetimepicker';
     const [hikeIn, setHikeIn] = useState(false);
     const [date, setDate] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     const onDateChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -19,6 +20,10 @@ import  DateTimePicker  from '@react-native-community/datetimepicker';
         console.log('campers:', campers);
         console.log('hike:', hikeIn);
         console.log('date:', date);
+        setShowModal(!showModal);
+    };
+
+    const resetForm = () => {
         setCampers(1);
         setHikeIn(false);
         setDate(new Date());
@@ -78,8 +83,37 @@ import  DateTimePicker  from '@react-native-community/datetimepicker';
 
                 />
             </View>
+            <Modal
+                animationType="fade"
+                transparent={false}
+                visible={showModal}
+                onRequestClose={() => setShowModal(!showModal)}
+            >
+                <View style={styles.modal}>
+                    <Text style={styles.modalTitle}>
+                        Search Campsite Reservation
+                    </Text>
+                    <Text style={styles.modalTitle}>
+                        Number of Campers: {campers}
+                    </Text>
+                    <Text style={styles.modalTitle}>
+                        Hike-In?: {hikeIn ? 'Yes' : 'No'}
+                    </Text>
+                    <Text style={styles.modalText}>
+                        Date: {date.toLocaleDateString('en-US')}
+                    </Text>
+                    <Button
+                        onPress={() =>{
+                            setShowModal(!showModal)
+                            resetForm();
+                        }}
+                        color='#5637DD'
+                        title="Close"
+                    />
+                </View>
+            </Modal>
         </ScrollView>
-    )
+    );
 };
 
 
@@ -97,7 +131,23 @@ import  DateTimePicker  from '@react-native-community/datetimepicker';
     },
     formItem: {
         flex:1
+    },
+    modal: {
+        justifyContent:'center',
+        margin: 20
+    },
+    modalTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        backgroundColor: '#5637DD',
+        textAlign: 'center',
+        color: '#fff',
+        marginBottom: 20
+    },
+    modalText: {
+        fontSize: 18,
+        margin: 10
     }
  });
 
- export default ReservationScreen;
+export default ReservationScreen;
