@@ -12,6 +12,7 @@ import HomeScreen from './HomeScreen';
 import AboutScreen from './AboutScreen';
 import ContactScreen from './ContactScreen';
 import ReservationScreen from './ReservationScreen';
+import FavoritesScreen from './FavoritesScreen';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchPartners } from '../features/partners/partnersSlice';
@@ -133,6 +134,33 @@ const ReservationNavigator = () => {
     );
 };
 
+const FavoritesNavigator = () => {
+    const Stack = createStackNavigator();
+    return (
+        <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+                name='Favorites'
+                component={FavoritesScreen}
+                options={({ navigation }) => ({
+                    title: 'Favorite Campsites',
+                    headerLeft: () => (    
+                        <Icon
+                            name='heart'
+                            type='font-awesome'
+                            iconStyle={styles.stackIcon}
+                            onPress={() => navigation.toggleDrawer()}
+                            
+                        />
+                    )
+                })}
+            />
+        </Stack.Navigator>
+    );
+};
+
+
+
+
 
 
 const AboutNavigator = () => {
@@ -239,6 +267,22 @@ const Main = () => {
                         drawerIcon: ({ color }) => (
                             <Icon
                                 name= 'tree'
+                                type= 'font-awesome'
+                                size={24}
+                                iconProps={{width: 10}}
+                                color={color}
+                            />
+                        )
+                    }}
+                />
+                <Drawer.Screen
+                    name='Favorites'
+                    component={FavoritesNavigator}
+                    options={{ 
+                        title: 'My Favorites',
+                        drawerIcon: ({ color }) => (
+                            <Icon
+                                name= 'heart'
                                 type= 'font-awesome'
                                 size={24}
                                 iconProps={{width: 10}}
