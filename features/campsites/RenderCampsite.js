@@ -7,8 +7,12 @@ import { useRef } from 'react';
 const RenderCampsite = (props) => {
     const { campsite } = props;
     const view = useRef();
+    
 
     const isLeftSwipe = ({ dx }) => dx < -200;
+    const isRightSwipe = ({ dx }) => dx > 200;
+
+
     const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onPanResponderGrant: () => {
@@ -18,6 +22,7 @@ const RenderCampsite = (props) => {
                     console.long(endState.finished ? 'finished' : 'canceled')
                 );
         },
+        
         onPanResponderEnd: (e, gestureState) => {
             console.log('onPanResponderEnd', gestureState);
             if (isLeftSwipe(gestureState)){
@@ -42,6 +47,9 @@ const RenderCampsite = (props) => {
                     ],
                     { cancelable: false }
                 );
+            }
+            else if (isRightSwipe(gestureState)) {
+                props.onShowModal();
             }
         }
     });
