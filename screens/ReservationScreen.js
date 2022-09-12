@@ -10,7 +10,6 @@ import * as Animatable from 'react-native-animatable';
     const [hikeIn, setHikeIn] = useState(false);
     const [date, setDate] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
-    const [showModal, setShowModal] = useState(false);
 
     const onDateChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -133,22 +132,7 @@ import * as Animatable from 'react-native-animatable';
     formItem: {
         flex:1
     },
-    modal: {
-        justifyContent:'center',
-        margin: 20
-    },
-    modalTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        backgroundColor: '#5637DD',
-        textAlign: 'center',
-        color: '#fff',
-        marginBottom: 20
-    },
-    modalText: {
-        fontSize: 18,
-        margin: 10
-    }
+
  });
 
 export default ReservationScreen;
