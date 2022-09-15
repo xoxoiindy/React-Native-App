@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { View, Button, StyleSheet } from "react-native";
+import { useEffect, useState } from 'react';
+import { View, Button, StyleSheet } from 'react-native';
 import { CheckBox, Input } from 'react-native-elements';
 import * as SecureStore from 'expo-secure-store';
 
 const LoginScreen = () => {
-    const [ username, setUsername ] = useState('');
-    const [ password, setPassword ] = useState('');
-    const [ remember, setRemember ] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [remember, setRemember] = useState(false);
 
     const handleLogin = () => {
         console.log('username:', username);
@@ -42,7 +42,7 @@ const LoginScreen = () => {
         <View style={styles.container}>
             <Input
                 placeholder='Username'
-                leftIcon={{type: 'font-awesome', name: 'user-o'}}
+                leftIcon={{ type: 'font-awesome', name: 'user-o' }}
                 onChangeText={(text) => setUsername(text)}
                 value={username}
                 containerStyle={styles.formInput}
@@ -50,7 +50,7 @@ const LoginScreen = () => {
             />
             <Input
                 placeholder='Password'
-                leftIcon={{type: 'font-awesome', name: 'key'}}
+                leftIcon={{ type: 'font-awesome', name: 'key' }}
                 onChangeText={(text) => setPassword(text)}
                 value={password}
                 containerStyle={styles.formInput}
@@ -71,7 +71,7 @@ const LoginScreen = () => {
                 />
             </View>
         </View>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         margin: 20
     },
-    formIcon:{
+    formIcon: {
         marginRight: 10
     },
     formInput: {
@@ -93,6 +93,5 @@ const styles = StyleSheet.create({
         margin: 40
     }
 });
-
 
 export default LoginScreen;
