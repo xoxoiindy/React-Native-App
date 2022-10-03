@@ -8,7 +8,6 @@ This application was built using React Native/Android Studio and is part of a Fu
 
 **Tech used:** React & React Native, Redux, JS, Android Studio
 
-App was developed using React Native. Made with React Native components.
 Some React Native components used were:
 - Animations
 - Alerts
