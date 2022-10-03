@@ -1,5 +1,5 @@
 # React Native APP
-This website was built using React Native/Android Studio and is part of a Full Stack Web Developement Bootcamp project.
+This application was built using React Native/Android Studio and is part of a Full Stack Web Developement Bootcamp project.
 
 
 
